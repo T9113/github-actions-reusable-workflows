@@ -1,0 +1,13 @@
+name: Reusable Docker CI
+on:
+  workflow_call:
+    inputs:
+      image-name:
+        required: true
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - run: docker build -t ${{ inputs.image-name }} .
